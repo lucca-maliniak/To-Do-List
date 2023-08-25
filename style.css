@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root{
+    --cinza: #999;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(30, 40, 62);
+}
+
+.box-content {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1px 2fr;
+    height: 25vh;
+    width: 20vw;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px black;
+    background-color: white;
+}
+
+.search-area {
+    justify-self: center;
+    align-self: center;
+    color: var(--cinza);
+    padding: 10px;
+    gap: 10px;
+    font-size: 1.4rem;
+    display: flex;
+    position: relative;
+    width: 92%;
+    height: 5vh;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.icon-list{
+    z-index: 1;
+}
+
+.input-area {
+    right: 1%;
+    position: absolute;
+    border: 1px solid var(--cinza);
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    z-index: 0;
+}
+
+.input-text {
+    width: 100%;
+    padding: 0 0 0 35px;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+}
+
+.buttons-area {
+    justify-self: center;
+    align-self: flex-start;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 0.3fr 1.5fr 1fr 2fr;
+}
+
+.results-area {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.results-default {
+    justify-self: center;
+    align-self: flex-start;
+    margin: 0 20px;
+}
+
+.all-type, .pending-type, .completed-type, .clearall-button {
+    cursor: pointer;
+    justify-self: center;
+    align-self: center;
+}
+
+hr {
+    color: var(--cinza);
+}
+
+.clearall-button {
+    justify-self: flex-end;
+    height: 3.5vh;
+    width: 70%;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(122, 126, 135);
+    border: none;
+}
+
+.clearall-button:hover {
+    background-color: black;
+}
