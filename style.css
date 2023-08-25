@@ -113,3 +113,24 @@ hr {
 .clearall-button:hover {
     background-color: black;
 }
+
+.active {
+    text-decoration: line-through;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.left-area {
+    display: flex;
+    gap: 10px;
+}
+
+.name-task {
+    font-weight: 500;
+    font-size: 1.2em;
+}

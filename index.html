@@ -10,22 +10,20 @@
     <main class="box-content">
         <div class="search-area">
             <div class="icon-list">
-                <i class="fa-solid fa-bars" icone></i>
+                <i class="fa-solid fa-bars"></i>
             </div>
             <div class="input-area">
                 <input type="text" placeholder="Add a new task" class="input-text" texto>
             </div>
         </div>
         <div class="buttons-area">
-            <div class="all-type">All</div>
-            <div class="pending-type">Pending</div>
-            <div class="completed-type">Completed</div>
-            <button class="clearall-button">Clear All</button>
+            <div class="all-type" all>All</div>
+            <div class="pending-type" pending>Pending</div>
+            <div class="completed-type" completed>Completed</div>
+            <button class="clearall-button" clear>Clear All</button>
         </div>
         <hr>
-        <div class="results-area">
-            <p class="results-default">You don't have any task here</p>
-        </div>
+        <ul class="results-area" results-area></ul>
     </main>
     <script src="https://kit.fontawesome.com/adb48c5fc0.js" crossorigin="anonymous"></script>
     <script src="./index.js"></script>
