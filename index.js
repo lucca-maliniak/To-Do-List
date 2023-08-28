@@ -20,7 +20,7 @@ function addTask(input) {
                             <input type="checkbox" onclick="updateStatus(this)" id="${id}">
                             <p class="name-task" task>${element}</p>
                         </span>
-                        <i class="fa-solid fa-ellipsis" id="reticencias"></i>
+                        <i class="fa-solid fa-ellipsis" id="reticencias" reticencias></i>
                     </li>`
         })
         resultado.innerHTML = li
@@ -30,7 +30,10 @@ function addTask(input) {
 }
 
 function clearList() {
-    resultado.innerHTML = ""
+    resultado.innerHTML = ''
+    listTask.forEach(e => {
+        listTask.splice(0, listTask.length)
+    })
 }
 
 function updateStatus() {
@@ -49,6 +52,4 @@ textoInput.addEventListener('keypress', e => {
     }
 })
 
-
-
-btnClear.addEventListener('click', clearList())
+btnClear.addEventListener('click', clearList)
