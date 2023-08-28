@@ -15,7 +15,7 @@ function addTask(input) {
     input == '' ? emptyTask : emptyTask = false
     if(!emptyTask) {
         listTask.forEach((element, id) => {
-            li += `<li class="task">
+            li += `<li class="task" fullTask>
                         <span class="left-area"> 
                             <input type="checkbox" onclick="updateStatus(this)" id="${id}">
                             <p class="name-task" task>${element}</p>
@@ -36,12 +36,16 @@ function clearList() {
     })
 }
 
-function updateStatus() {
-    const task = document.querySelectorAll('[task]')
-    const idCheck = document.getElementById('id')
-    const arrayTask = Array.from(task)
-    arrayTask[idCheck].classList.toggle('active')
-    console.log(arrayTask)
+function updateStatus(task) {
+    const textTask = document.querySelectorAll('[task]')
+    const fullTask = document.querySelector('[fullTask]')
+    const arrTask = Array.from(textTask)
+    arrTask[task.id].classList.toggle('active')
+    if(arrTask[task.id].classList.contains('active')){
+        listCompleted.push(fullTask)
+    } else {
+        listCompleted.pop()
+    }
 }
 
 textoInput.addEventListener('keypress', e => {
