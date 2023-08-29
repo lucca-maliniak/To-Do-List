@@ -5,18 +5,17 @@ const btnCompleted = document.querySelector('[completed]')
 const btnClear = document.querySelector('[clear]')
 const resultado = document.querySelector('[results-area]')
 
-let emptyTask = true
-const listTask = []
+const inputList = []
 const listCompleted = []
 const listPending = []
+const listTask = []
 
 function addTask(input) {
     let li = ''
-    listTask.push(input)
-    input == '' ? emptyTask : emptyTask = false
-    if(!emptyTask) {
-        listTask.forEach((element, id) => {
-            li += `<li class="task" fullTask>
+    inputList.push(input)
+    if(!(resultado.innerHTML === '')) {
+        inputList.forEach((element, id) => {
+            li = `<li class="task" liTask>
             <span class="left-area"> 
             <input type="checkbox" onclick="updateStatus(this)" id="${id}">
             <p class="name-task" task>${element}</p>
@@ -24,15 +23,19 @@ function addTask(input) {
             <i class="fa-solid fa-ellipsis" id="reticencias" reticencias></i>
             </li>`
         })
-        resultado.innerHTML = li
+        listTask.push(li)
+        resultado.innerHTML = desconstructArray(listTask)
         listPending.push(li)
-    } else {
+    } else { 
         resultado.innerHTML = '<span>You dont have any task here!</span>'
     }
 }
 
+function desconstructArray(array) {
+    return array.join('')
+}
+
 function clearList() {
-    emptyTask = true
     resultado.innerHTML = ''
     listTask.forEach(e => {
         listTask.splice(0, listTask.length)
@@ -43,15 +46,17 @@ function clearList() {
     listCompleted.forEach(e => {
         listCompleted.splice(0, listCompleted.length)
     })
+    resultado.innerHTML = '<span>You dont have any task here!</span>'
 }
 
 function updateStatus(task) {
     const textTask = document.querySelectorAll('[task]')
-    const fullTask = document.querySelector('[fullTask]')
     const arrTask = Array.from(textTask)
+    listPending.push(listTask[task.id])
     arrTask[task.id].classList.toggle('active')
     if(arrTask[task.id].classList.contains('active')){
-        listCompleted.push(fullTask)
+        listCompleted.push(listTask[task.id])
+        // todo 
     } else {
         listCompleted.pop()
     }
@@ -61,25 +66,18 @@ function showStatus(e) {
    const conteudo = e.target.textContent
    switch(conteudo) {
         case 'All':
-            resultado.innerHTML = "All"
+            resultado.innerHTML = desconstructArray(listTask)
             break
         case 'Pending':
-            constructBody(listPending)
+            resultado.innerHTML = desconstructArray(listPending)
             break
         case 'Completed':
-            resultado.innerHTML = "Completed"
+            resultado.innerHTML = desconstructArray(listCompleted)
+            console.log(listCompleted)
             break
         default:
-            resultado.innerHTML = 'error 404'
+            resultado.innerHTML = 'Error 404'
    }
-   // TODO
-}
-
-function constructBody(list) {
-    list.forEach((e, i) => {
-        resultado.innerHTML = e[i]
-    })
-    // TODO
 }
 
 textoInput.addEventListener('keypress', e => {
@@ -90,6 +88,7 @@ textoInput.addEventListener('keypress', e => {
     }
 })
 
+window.addEventListener('load', (() => resultado.innerHTML = '<span>You dont have any task here!</span>'))
 btnClear.addEventListener('click', clearList)
 btnAll.addEventListener('click', showStatus)
 btnPending.addEventListener('click', showStatus)
